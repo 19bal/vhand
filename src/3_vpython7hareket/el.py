@@ -146,7 +146,7 @@ class El:
         self.fpinky_distal  = frame(frame=self.fpinky_middle,  pos=(2.4,   0,    0))
 
         # nesneler
-        self.kol   = cylinder (frame=self.fkol , pos=(-31, 0, -3.9),    length=20,  radius=3.5)
+        self.kol   = cylinder (frame=self.fkol , pos=(-31, 0, 3),    length=20,  radius=3.5)
         self.palm  = box      (frame=self.fpalm, pos=(0, 8.8,    0),    length=2,   height=9,  width=10)
         self.palme = ellipsoid(frame=self.fpalm, pos=(0,   7,    0),    length=2,   height=13, width=11) 
         

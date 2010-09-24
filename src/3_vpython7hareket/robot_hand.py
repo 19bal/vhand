@@ -1,7 +1,7 @@
 from visual import display, color, scene
 from el import * 
 
-scene = display( title='Bilek Ac/Kapa', autoscale=1, background=(123, 134, 76))
+scene = display( title='Bilek Ac/Kapa', autoscale=1, background=(1,1,0))
 scene.height = scene.width = 300
 scene.center = (-2,0,0)
 
