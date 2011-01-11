@@ -1,8 +1,8 @@
 from visual import *
 
 class El:
-    def dondurbas(self, yon=1, rng=255, hiz=45, dt=pi/160000):
-        RATE  = hiz*300/45
+    def dondurbas(self, yon=1, rng=255, hiz=1.0, dt=pi/160000):
+        RATE  = hiz*300
         AXIS  = (0, 1, 0)
 
         for t in range(rng):
@@ -13,13 +13,15 @@ class El:
             self.fthumb_middle.rotate(angle=ANGLE, axis=AXIS)
             self.fthumb_distal.rotate(angle=ANGLE, axis=AXIS)
 
-    def ac_kapa(self, yon=1, rng=255, hiz=45, dt=pi/160000):
-        RATE  = hiz*300/45
+    def ac_kapa(self, yon=1, rng=255, hiz=1.0):
+        RATE  = hiz*100
         AXIS  = (0, 0, 1)
+
+        dt=pi/160000
 
         for t in range(rng):
             rate(RATE)
-            ANGLE = yon*t*dt
+            ANGLE = yon * (pi/7) / rng #yon*t*dt
 
             self.fthumb_prox.rotate   (angle=0.6*ANGLE, axis=(0,1,0))
             self.fthumb_middle.rotate (angle=0.6*ANGLE, axis=(0,1,0))
@@ -41,8 +43,8 @@ class El:
             self.fpinky_middle.rotate (angle=ANGLE, axis=AXIS)
             self.fpinky_distal.rotate (angle=ANGLE, axis=AXIS)
 
-    def asagi_yukari(self, yon=1, rng=215, hiz=45, dt=pi/160000):
-        RATE  = hiz*300/45
+    def asagi_yukari(self, yon=1, rng=215, hiz=1.0, dt=pi/160000):
+        RATE  = hiz*300
         AXIS  = (0, 0, 1)
 
         for t in range(rng):
@@ -51,8 +53,8 @@ class El:
 
             self.fpalm.rotate         (angle=2.5*ANGLE, axis=AXIS)
 
-    def saga_sola_dondur(self, yon=1, rng=215, hiz=45, dt=pi/160000):
-        RATE  = hiz*300/45
+    def saga_sola_dondur(self, yon=1, rng=215, hiz=1.0, dt=pi/160000):
+        RATE  = hiz*300
         AXIS  = (0, 1, 0)
 
         for t in range(rng):
