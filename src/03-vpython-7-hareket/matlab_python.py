@@ -1,4 +1,4 @@
-from el import *
+from El import *
 from visual import display, color, scene
 import time
 

@@ -1,5 +1,5 @@
 from visual import display, color, scene
-from el import *
+from El import *
 
 scene = display( title='Bilek Ac/Kapa', background=(1,1,0))
 scene.height = scene.width = 300
