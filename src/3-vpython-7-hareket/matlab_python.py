@@ -9,7 +9,7 @@ def process(line):
     # do something
     print line
     num = int(line)
-        
+
     if  num == 1:
        elim.yuk()
     elif num == 2:
@@ -22,7 +22,7 @@ def process(line):
         print "yok boyle bir sey"
 
     durum = num
-        
+
 def follow(thefile):
     thefile.seek(0,2)		# go to the end of the file
     while True:
