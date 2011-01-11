@@ -2,18 +2,14 @@ from visual import *
 import math
 
 class El:
-    def ac_kapa(self, yon=+1):
-        hiz = math.radians(self.hiz)            # (acisal) 'hiz' deg/sn -> rad/sn
-        MAX_ROT_ANG = pi / 7                    # max donme acisi
-        STEP_SIZE = 100                         # adim sayisi:
-                                                # donme acikligi kac parca
-        ANGLE = yon * MAX_ROT_ANG / STEP_SIZE   # aci adimlari
-        RATE  = math.fabs(hiz / ANGLE)          # donme yenileme frekansi
-        AXIS  = (0, 0, 1)                       # donme ekseni
+    def ac_kapa_adimla(self, yon=+1):
+        hiz = math.radians(self.hiz)                # (acisal) 'hiz' deg/sn -> rad/sn
+        MAX_ROT_ANG = pi / 7                        # max donme acisi
+        ANGLE = yon * MAX_ROT_ANG / self.STEP_SIZE  # aci adimlari
+        AXIS  = (0, 0, 1)                           # donme ekseni
 
-        for i in range(STEP_SIZE):
-            rate(RATE)
-
+        print self.step, self.STEP_SIZE
+        if (math.fabs(self.step) < self.STEP_SIZE) or (yon * self.step == - self.STEP_SIZE):
             self.fthumb_prox.rotate   (angle=0.6*ANGLE, axis=(0,1,0))
             self.fthumb_middle.rotate (angle=0.6*ANGLE, axis=(0,1,0))
             self.fthumb_distal.rotate (angle=0.6*ANGLE, axis=(0,1,0))
@@ -34,16 +30,34 @@ class El:
             self.fpinky_middle.rotate (angle=ANGLE, axis=AXIS)
             self.fpinky_distal.rotate (angle=ANGLE, axis=AXIS)
 
-    def asagi_yukari(self, yon=+1):
-        hiz = math.radians(self.hiz)            # (acisal) 'hiz' deg/sn -> rad/sn
-        MAX_ROT_ANG = 1.5 * pi / 7              # max donme acisi
-        STEP_SIZE = 100                         # adim sayisi:
-                                                # donme acikligi kac parca
-        ANGLE = yon * MAX_ROT_ANG / STEP_SIZE   # aci adimlari
-        RATE  = math.fabs(hiz / ANGLE)          # donme yenileme frekansi
-        AXIS  = (0, 0, 1)                       # donme ekseni
+            self.step = self.step + yon
 
-        for i in range(STEP_SIZE):
+        if self.step == yon * self.STEP_SIZE:
+            self.DURUM = self.ACIK
+        elif self.step == 0:
+            self.DURUM = self.SERBEST
+        else:
+            self.DURUM = self.KAPALI
+
+    def ac_kapa(self, yon=+1):
+        hiz = math.radians(self.hiz)                # (acisal) 'hiz' deg/sn -> rad/sn
+        MAX_ROT_ANG = pi / 7                        # max donme acisi
+        ANGLE = yon * MAX_ROT_ANG / self.STEP_SIZE  # aci adimlari
+        RATE  = math.fabs(hiz / ANGLE)              # donme yenileme frekansi
+
+        for i in range(self.STEP_SIZE):
+            rate(RATE)
+
+            self.ac_kapa_adimla(yon)
+
+    def asagi_yukari(self, yon=+1):
+        hiz = math.radians(self.hiz)                # (acisal) 'hiz' deg/sn -> rad/sn
+        MAX_ROT_ANG = 1.5 * pi / 7                  # max donme acisi
+        ANGLE = yon * MAX_ROT_ANG / self.STEP_SIZE  # aci adimlari
+        RATE  = math.fabs(hiz / ANGLE)              # donme yenileme frekansi
+        AXIS  = (0, 0, 1)                           # donme ekseni
+
+        for i in range(self.STEP_SIZE):
             rate(RATE)
 
             self.fpalm.rotate         (angle=ANGLE, axis=AXIS)
@@ -123,6 +137,9 @@ class El:
         fbody = self.__body
 
         self.hiz = hiz      # (acisal) hiz: deg/sn
+        self.SERBEST, self.ACIK, self.KAPALI, self.YUKARI, self.ASAGI, self.SOLA, self.SAGA = range(0, 7, 1)
+        self.STEP_SIZE = 100
+        self.step = self.STEP_SIZE
 
         # frame ler
         self.fkol  = frame(frame=fbody, axis=(0, 1, 0))
@@ -181,8 +198,6 @@ class El:
         self.pinky_uc  = sphere(frame=self.fpinky_distal,  radius=1, pos=(2.3, 0, 7.5))
 
         self.ac_kapa(-1)
-
-        self.SERBEST, self.ACIK, self.KAPALI, self.YUKARI, self.ASAGI, self.SOLA, self.SAGA = range(0, 7, 1)
         self.DURUM = self.SERBEST
 
     def setColor(self, color):

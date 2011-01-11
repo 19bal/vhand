@@ -22,4 +22,6 @@ while 1:
         if  tus == '4':     el.asagi()
         if  tus == '5':     el.sola()
         if  tus == '6':     el.saga()
+        if  tus == '7':     el.ac_kapa_adimla(+1)
+        if  tus == '8':     el.ac_kapa_adimla(-1)
 
