@@ -1,3 +1,15 @@
+# Hedefler
+
+- adımlayarak açma/kapama
+
+- değişken hızla açma/kapama
+
+- güncel açı değeriyle vhand'i güncelleme
+
+- acceleglove ile sürülebilen vhand
+
+# Kurulum
+
 1. /etc/ap/sources.lst eklentisi
 
 https://launchpad.net/~ajmitch/+archive/ppa
