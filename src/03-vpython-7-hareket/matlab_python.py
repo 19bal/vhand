@@ -11,13 +11,17 @@ def process(line):
     num = int(line)
 
     if  num == 1:
-       el.yuk()
-    elif num == 2:
-       el.asg()
-    elif num == 3:
        el.ac()
-    elif num == 4:
+    elif num == 2:
        el.kapa()
+    elif num == 3:
+       el.yukari()
+    elif num == 4:
+        el.asagi()
+    elif num == 7:
+        el.ac_kapa_adimla(+1)
+    elif num == 8:
+        el.ac_kapa_adimla(-1)
     else:
         print "yok boyle bir sey"
 
@@ -34,11 +38,13 @@ def follow(thefile):
 
 #clearscreen()
 
-scene = display( title='Bilek Ac/Kapa', autoscale=0, background=(123, 134, 76))
-scene.height = scene.width = 600
+scene = display( title='Bilek Ac/Kapa', background=(1,1,0))
+
+#scene = display( title='Bilek Ac/Kapa', autoscale=0, background=(123, 134, 76))
+scene.height = scene.width = 300
 scene.center = (-2,0,0)
 
-el = El(scene=scene, name="El", hiz=5)
+el = El(scene=scene, name="El", hiz=25)
 
 el.setPosition((0, 0, 0))
 
@@ -46,5 +52,6 @@ thefile = open('test.txt')
 lines = follow(thefile)
 
 for line in lines:
+    print line
     process(line)
 

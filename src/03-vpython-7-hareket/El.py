@@ -39,6 +39,22 @@ class El:
         else:
             self.DURUM = self.KAPALI
 
+    def ac_kapa_anlik(self, hedef):
+        """\
+                self.step:yon:hedef e adimla
+        """
+        yon = +1 if self.step < hedef else -1
+
+        hiz = math.radians(self.hiz)                # (acisal) 'hiz' deg/sn -> rad/sn
+        MAX_ROT_ANG = pi / 7                        # max donme acisi
+        ANGLE = yon * MAX_ROT_ANG / self.STEP_SIZE  # aci adimlari
+        RATE  = math.fabs(hiz / ANGLE)              # donme yenileme frekansi
+
+        for i in range(self.step, hedef, yon):
+            rate(RATE)
+
+            self.ac_kapa_adimla(yon)
+
     def ac_kapa(self, yon=+1):
         hiz = math.radians(self.hiz)                # (acisal) 'hiz' deg/sn -> rad/sn
         MAX_ROT_ANG = pi / 7                        # max donme acisi
