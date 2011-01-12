@@ -4,7 +4,7 @@
 
 - değişken hızla açma/kapama
 
-- güncel açı değeriyle vhand'i güncelleme
+- güncel açı değeriyle vhand'i güncelleme. 19bal/heg çıktılarıyla sürme.
 
 - acceleglove ile sürülebilen vhand
 
