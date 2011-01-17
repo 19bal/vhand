@@ -4,8 +4,10 @@ dbg = true;
 
 fnm_alpha = pathos('_bkp/renkli_marker_alpha.csv');
 if ~exist(fnm_alpha),
-    error(sprintf('19bal/heg/.../05-vid-renkli-marker/_bkp/%s yi buraya kopyala', fnm_alpha));  
+    error(sprintf('19bal/heg/.../05-vid-renkli-marker/_bkp/%s yi buraya kopyala\nVEYA bunu dene: https://github.com/downloads/19bal/heg/renkli_marker_alpha.csv', fnm_alpha));  
 end
+
+disp('anlik.py betigi calisyor degil mi');
 
 alpha = csvread(fnm_alpha);
 
@@ -28,7 +30,7 @@ fid = fopen('test.txt', 'a');
 tmp = alpha(1);
 fprintf(fid, '%d\n', tmp);
 fclose(fid);
-pause(1)
+pause(5)
 
 for i = 1:length(alpha)
     fid = fopen('test.txt', 'a');
@@ -39,6 +41,6 @@ for i = 1:length(alpha)
     fclose(fid);
     
     fprintf('%s : %d\n', datestr(now, 'MM:SS:FFF'), tmp);
-    pause(0.3)
+    pause(1)
 end
 
