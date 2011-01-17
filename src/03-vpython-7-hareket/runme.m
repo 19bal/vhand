@@ -9,9 +9,9 @@ for i = 1:length(nums)
     %tmp = 6+randperm(2);
     %tmp = tmp(1);
     tmp = nums(i);
-    
+
     fprintf(fid, '%d\n', tmp);
     fclose(fid);
     fprintf('%s : %d\n', datestr(now, 'MM:SS:FFF'), tmp);
-    pause(0.1)
+    pause(0.3)
 end
