@@ -27,20 +27,20 @@ if dbg, plot(alpha),    end
 
 % ilkleme
 fid = fopen('test.txt', 'a');
-tmp = alpha(1);
+tmp = round(1.5 * alpha(1));
 fprintf(fid, '%d\n', tmp);
 fclose(fid);
-pause(5)
+pause(2)
 
-for i = 1:length(alpha)
+for i = 1:5:length(alpha)
     fid = fopen('test.txt', 'a');
 
-    tmp = alpha(i);
+    tmp = round(1.5 * alpha(i));
 
     fprintf(fid, '%d\n', tmp);
     fclose(fid);
     
     fprintf('%s : %d\n', datestr(now, 'MM:SS:FFF'), tmp);
-    pause(1)
+    pause(0.2)
 end
 
